@@ -1,0 +1,24 @@
+### 大學
+
+大學期間主要修習航太工程相關課程，涵蓋電子、控制系統與流體力學等領域，建立扎實的工程基礎與問題分析能力，並培養解決工程問題的能力。
+
+### 研究所
+
+研究所期間主要專注於機器學習與軟體開發相關領域，深入學習深度學習演算法的核心原理，並進一步學習模型壓縮、效能優化與模型部署等實務技術。此外，因對金融市場具有高度興趣，亦修習投資銀行與投資策略相關課程，學習 IPO 分析、企業評價及金融市場相關知識。
+
+### 工作
+
+工作期間主要負責機台保養與設備維護，並參與設備生產流程優化及功能改善。透過參與設備穩定性、生產效率與功能提升等相關專案，培養跨部門合作與溝通能力，同時學習如何獨立分析問題、找出解決方案並持續優化設備與生產流程。
+
+
+### Undergraduate Studies
+
+During my undergraduate studies, I focused on aerospace engineering and took courses in electronics, control systems, and fluid mechanics. These experiences provided me with a solid engineering foundation and strengthened my problem-solving and analytical skills.
+
+### Graduate Studies
+
+During my graduate studies, I focused primarily on machine learning and software development. I developed a strong understanding of the core principles behind deep learning algorithms and gained practical experience in model compression, performance optimization, and model deployment. In addition, driven by my strong interest in financial markets, I took courses in investment banking and investment strategies, where I learned about IPO analysis, corporate valuation, and financial markets.
+
+### Work Experience
+
+In my work experience, I was primarily responsible for machine maintenance and equipment management, while also participating in projects focused on optimizing production processes and improving equipment functionality. Through projects aimed at enhancing equipment stability, production efficiency, and functionality, I developed strong cross-functional collaboration and communication skills, while also learning to independently identify problems, develop solutions, and continuously improve equipment and production processes.
