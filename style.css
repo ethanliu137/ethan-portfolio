@@ -30,7 +30,7 @@
   --font-display: 'Space Grotesk', sans-serif;
   --font-serif: 'Playfair Display', serif;
   --font-body: 'eng_font', 'Inter', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-mono: 'Space Grotesk', monospace;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -112,18 +112,35 @@ nav.topnav {
 .topnav ul {
   list-style: none;
   display: flex;
-  gap: 28px;
+  gap: 34px;
 }
 
 .topnav a {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
+  position: relative;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.01em;
   color: var(--ink-soft);
-  transition: color 0.2s ease;
+  padding-bottom: 3px;
+  transition: color 0.3s ease;
 }
 
-.topnav a:hover { color: var(--teal); }
+.topnav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.topnav a:hover { color: var(--ink); }
+.topnav a:hover::after { transform: scaleX(1); }
 
 @media (max-width: 560px) {
   .topnav ul { gap: 16px; }
@@ -181,13 +198,6 @@ nav.topnav {
 }
 
 .hero h1 .accent { color: var(--teal); }
-
-.hero .role-line {
-  font-family: var(--font-mono);
-  font-size: 15px;
-  color: var(--ink-soft);
-  max-width: 520px;
-}
 
 /* Skill group blocks */
 .hero .skill-groups {
@@ -257,7 +267,43 @@ section { padding: 88px 0; border-top: 1px solid var(--line); }
 .about-grid { display: block; }
 .about-grid p { color: var(--ink-soft); font-size: 16px; margin-bottom: 16px; }
 
-/* ---------- Projects (plain list, no logo) ---------- */
+/* ---------- Project category filters ---------- */
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -20px 0 32px;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--mustard);
+  color: var(--ink);
+}
+
+.filter-btn.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+@media (max-width: 560px) {
+  .project-filters { gap: 8px; margin-top: -12px; }
+  .filter-btn { padding: 6px 12px; font-size: 11px; }
+}
+
+/* ---------- Projects ---------- */
 .project-list { display: flex; flex-direction: column; }
 
 .project-item {
@@ -273,6 +319,10 @@ section { padding: 88px 0; border-top: 1px solid var(--line); }
 .project-item:hover {
   background: var(--bg-panel);
   padding-left: 12px;
+}
+
+.project-list .project-item:last-child {
+  border-bottom: none;
 }
 
 .project-item h3 {
@@ -297,7 +347,7 @@ section { padding: 88px 0; border-top: 1px solid var(--line); }
   white-space: nowrap;
 }
 
-/* "Live demo" indicator for external links (e.g. dashboard) */
+/* "Live demo" indicator for external links */
 .live-link {
   display: inline-flex;
   align-items: center;
@@ -308,7 +358,7 @@ section { padding: 88px 0; border-top: 1px solid var(--line); }
   color: var(--mustard);
 }
 
-/* Row that holds multiple action links inside a project-item (e.g. website + instructions) */
+/* Row that holds multiple action links inside a project-item */
 .project-links {
   display: flex;
   flex-wrap: wrap;
@@ -326,7 +376,8 @@ section { padding: 88px 0; border-top: 1px solid var(--line); }
   margin-top: 10px;
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--ink-soft);
+  color: var(--ink);
+  font-weight: 600;
   cursor: pointer;
   border-bottom: 1px solid transparent;
   transition: color 0.2s ease, border-color 0.2s ease;
@@ -335,6 +386,15 @@ section { padding: 88px 0; border-top: 1px solid var(--line); }
 .doc-link:hover {
   color: var(--ink);
   border-color: var(--ink);
+}
+
+.doc-link .arrow {
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.doc-link:hover .arrow {
+  transform: translateX(4px);
 }
 
 .project-links .doc-link {
@@ -518,17 +578,16 @@ section { padding: 88px 0; border-top: 1px solid var(--line); }
 }
 
 /* ---------- Contact ---------- */
-.contact-block h2 {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4.5vw, 44px);
-  font-weight: 700;
-  max-width: 620px;
-  margin-bottom: 28px;
+.contact-links {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
 }
 
-.contact-links { display: flex; gap: 28px; flex-wrap: wrap; }
-
 .contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 14px;
   padding-bottom: 4px;
@@ -536,6 +595,18 @@ section { padding: 88px 0; border-top: 1px solid var(--line); }
 }
 
 .contact-links a:hover { color: var(--teal); border-color: var(--teal); }
+
+.contact-links a svg {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  color: var(--mustard);
+  transition: color 0.2s ease;
+}
+
+.contact-links a:hover svg {
+  color: var(--ink);
+}
 
 footer {
   background: var(--ink);
@@ -555,7 +626,7 @@ footer .wrap {
 
 @media (max-width: 720px) {
   section { padding: 64px 0; }
-  .about-grid, .project-item { grid-template-columns: 1fr; }
+  .project-item { grid-template-columns: 1fr; }
 }
 
 /* ---------- PDF full-screen modal ---------- */
